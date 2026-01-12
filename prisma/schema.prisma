@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Owner {
+  id        String   @id @default(uuid())
+  clerkId   String   @unique
+  email     String   @unique
+  shops     Shop[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Shop {
+  id          String     @id @default(uuid())
+  name        String
+  slug        String     @unique
+  ownerId     String
+  owner       Owner      @relation(fields: [ownerId], references: [id])
+  prizes      Prize[]
+  customers   Customer[]
+  wins        Win[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Prize {
+  id          String   @id @default(uuid())
+  name        String
+  probability Float    // Percentage 0-100 or 0-1
+  color       String   @default("#ff0000") // For the wheel
+  shopId      String
+  shop        Shop     @relation(fields: [shopId], references: [id])
+  wins        Win[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  shopId    String
+  shop      Shop     @relation(fields: [shopId], references: [id])
+  wins      Win[]
+  createdAt DateTime @default(now())
+
+  @@unique([phone, shopId]) // prevent duplicates per shop
+}
+
+model Win {
+  id         String   @id @default(uuid())
+  prizeId    String
+  prize      Prize    @relation(fields: [prizeId], references: [id])
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  shopId     String
+  shop       Shop     @relation(fields: [shopId], references: [id])
+  redeemed   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
