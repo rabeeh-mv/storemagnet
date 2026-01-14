@@ -17,7 +17,8 @@ export async function getShopDetails() {
 
     return {
         id: owner.shops[0].id,
-        name: owner.shops[0].name
+        name: owner.shops[0].name,
+        slug: owner.shops[0].slug
     }
 }
 
