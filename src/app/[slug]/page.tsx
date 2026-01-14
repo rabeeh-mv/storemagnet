@@ -2,6 +2,8 @@ import { getShopBySlug } from "@/app/actions/public-actions"
 import { ShopPublicPage } from "@/components/public/ShopPublicPage"
 import { notFound } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 interface PageProps {
     params: Promise<{ slug: string }>
 }
