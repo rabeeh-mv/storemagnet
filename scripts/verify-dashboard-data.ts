@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { db } from "../src/lib/db.ts"
+import { db } from "../src/lib/db"
 
 async function verifyDashboardData() {
     console.log("Verifying Dashboard Data Logic...")

@@ -44,19 +44,10 @@ export function ShopPublicPage({ shop }: ShopPublicPageProps) {
         if (!customer) throw new Error("No customer")
         const result = await spinWheel(shop.id, customer.id)
         return {
-            id: result.prize, // Note: Action returns prize name as 'prize', but let's assume mapping logic if needed or just use name
             // The action returns { prize: string, color: string, winId: string }
             // Our Prize interface needs id, label, color.
             // Let's adapt:
-            id: result.winId, // Use winId as unique ID for this instance? Or strictly mapped?
-            // Actually SpinWheel expects a Prize object that exists in the 'prizes' array to find index?
-            // The 'prizes' prop in SpinWheel is used for rendering.
-            // The 'onSpinRequest' returns the WON prize.
-            // We need to return the Prize object that matches one in the list so SpinWheel can find the index.
-
-            // Wait, standardizing:
-            // The action returns: { prize: "Name", color: "#..." } mechanism.
-            // We need to match it to our shop.prizes.
+            id: result.winId,
             label: result.prize,
             color: result.color
         }
