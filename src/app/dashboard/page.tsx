@@ -1,6 +1,7 @@
 import { getDashboardStats } from "@/app/actions/dashboard-actions"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Scan, Trophy, TrendingUp } from "lucide-react"
+import { CreateShopModal } from "@/components/dashboard/CreateShopModal"
 
 export default async function DashboardPage() {
     const stats = await getDashboardStats()
@@ -11,6 +12,7 @@ export default async function DashboardPage() {
 
     return (
         <div className="space-y-6">
+            <CreateShopModal open={!stats.hasShop} />
             <div>
                 <h2 className="text-3xl font-bold tracking-tight">Overview</h2>
                 <p className="text-muted-foreground">Welcome back! Here's what's happening in your shop.</p>

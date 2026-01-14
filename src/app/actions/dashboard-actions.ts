@@ -24,6 +24,7 @@ export async function getDashboardStats() {
 
     if (!owner || owner.shops.length === 0) {
         return {
+            hasShop: false,
             totalLeads: 0,
             totalScans: 0,
             redeemedPrizes: 0,
@@ -81,6 +82,7 @@ export async function getDashboardStats() {
     }))
 
     return {
+        hasShop: true,
         totalLeads,
         totalScans,
         redeemedPrizes,
