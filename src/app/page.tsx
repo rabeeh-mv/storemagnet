@@ -18,10 +18,10 @@ export default function Home() {
             <span className="text-xl font-bold tracking-tight">StoreMagnet</span>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/dashboard/sign-in">
+            <Link href="/dashboard">
               <span className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Sign In</span>
             </Link>
-            <Link href="/dashboard/sign-up">
+            <Link href="/dashboard/">
               <Button size="sm" className="bg-white text-black hover:bg-zinc-200 font-semibold rounded-full px-6">
                 Get Started
               </Button>
@@ -54,7 +54,7 @@ export default function Home() {
               Stop losing customers after they walk out the door. Gamify their experience with a digital spin wheel, capture their data, and keep them coming back.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/dashboard/sign-up">
+              <Link href="/dashboard">
                 <Button size="lg" className="h-12 px-8 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg shadow-lg shadow-indigo-500/20 transition-all hover:scale-105">
                   Start for Free <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -171,7 +171,7 @@ export default function Home() {
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to modernize your shop?</h2>
           <p className="text-xl text-zinc-400 mb-10">Join smart business owners who are capturing leads automatically.</p>
-          <Link href="/dashboard/sign-up">
+          <Link href="/dashboard">
             <Button size="lg" className="h-14 px-10 rounded-full bg-white text-black hover:bg-zinc-200 font-bold text-lg">
               Create Your Free Account
             </Button>
